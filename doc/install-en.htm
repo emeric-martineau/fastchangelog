@@ -1,0 +1,97 @@
+<html>
+
+<body bgcolor="white">
+
+<h1>1 - Install</h1>
+
+
+<p>To install FastChangeLog, uncompress the current archive.</p>
+
+<p>Edit the index.php file and at the ligne 34 :</p>
+
+<p>$monTheme-&gt;addVar(&quot;URL&quot;, &quot;http://localhost/changelog&quot;) ;</p>
+
+<p>replace http://localhost/changelog by your url.</p>
+
+<p>Then, it is enough to personalize the files of theme into the theme directory.
+To finish, copy all file (not doc directory and not contents of directory changelog) on your server.</p>
+
+
+<h1>2 - Personalize</h1>
+
+<p>To personalize your changelog, read the fasttemplate.htm file.</p>
+
+<p>The files theme are :<br />
+- bugfix.htm : contain the line to show the bug with special function.<br />
+- index.htm : index page<br />
+- ligne.htm : normaly ligne<br />
+- retour.htm : the return link<br />
+- titre-major.htm : major version (e.g. version 2)<br />
+- titre-minor.htm : minor version (e.g. version 2.1.2)</p>
+
+<h2>2.1 - index.htm</h2>
+
+<img src="fastchangelog1.png" />
+
+<p>{ URL } : contain the url to acces to changelog<br />
+{ PAGE } : contain the major version or minor version white the change</p>
+
+<h2>2.2 - titre-majeur.htm</h2>
+
+<img src="fastchangelog2.png" />
+
+<p>{ URL } :  contain the url to acces to changelog<br />
+{ VERSION } : contain the number of major version</p>
+
+<h2>2.3 - titre-mineur.htm</h2>
+
+<img src="fastchangelog3.png" />
+
+<p>{ VERSION } : contain the number of minor version<br />
+{ NAME } : name of the person who validate the version<br />
+{ DATE } : date of version<br />
+{ CHANGE } : contain the change</p>
+
+<h2>2.4 - ligne.htm</h2>
+
+<img src="fastchangelog4.png" />
+
+<p>{ TEXTE } : text of change</p>
+
+<h2>2.5 - bugfix.htm</h2>
+
+<img src="fastchangelog5.png" />
+
+<p>{ BUG } : contain the bug number<br />
+{ COMPLEMENT } : complement of information</p>
+
+<h2>2.6 - retour.htm</h2>
+
+<img src="fastchangelog6.png" />
+
+<p>{ URL } : contain the url of access to the changelog</p>
+
+<h1>3 - Creating of version</h1>
+
+<p>To create a major version, just create a new directory in changelog directory, who has a name the number of major version.<br />
+To create a minor version, just create a new directory in major version directory, who has a name the number of minor version.<br />
+In this directory, just create a file named <strong>log.txt</strong></p>
+
+<h1>4 - Format log.txt file</h1>
+
+<p>The log.txt file avec a special structure.<br />
+The first line contain the name of the people who have create the changelog file.<br />
+The second line contain the date of creation.<br />
+The, the rest of file contain the changelog.</p>
+
+<h2>4.1 - Bugfix special function</h2>
+
+<p>A special function to manage bugfix was created. The line must be start with the <strong>@</strong> caractere, follow-up the bug number.<br />
+If you want add a comment of bug, let a space after the bug number and the rest of line was the comment.</p>
+
+<h2>4.2 - Exemple de fichier</h2>
+
+<img src="fastchangelog7.png" />
+
+</body>
+</html>

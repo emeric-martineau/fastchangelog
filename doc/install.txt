@@ -1,0 +1,41 @@
+1 - INSTALLATION
+================
+
+Pour installer FastChangeLog, décompressez l'archive.
+
+Editer le fichier index.php et à la ligne 34 :
+
+$monTheme->addVar("URL", "http://localhost/changelog") ;
+
+rempacer http://localhost/changelog par votre url d'accès.
+
+Ensuite, il suffit de personnaliser les fichiers de theme, contenu dans le répertoire themes.
+Enfin, copier les fichiers (hormis répertoire doc et le contenu du répertoire changelog) sur votre serveur.
+
+
+2- PERSONNALISATION
+===================
+
+Pour personnaliser l'affichage de votre changelog, lisez la documentation fasttemplate.htm.
+
+Les fichiers de thèmes sont : 
+- bugfix.htm : contenant la ligne d'affichage pour une résolution d'un bug via un module spécial.
+- index.htm : page d'index
+- ligne.htm : ligne normal
+- retour.htm : lien de retour si on affiche le changelog d'une version
+- titre-major.htm : affichage de la version majeur (e.g. version 2)
+- titre-minor.htm : affichage de la version mineur (e.g. version 2.1.2)
+
+2.1 - index.htm
+---------------
+[image]
+
+{ URL } : contient l'url pour accèder au changelog
+{ PAGE } : va contenir soit la liste des versions majeurs, soit la liste des versions mineurs avec les change
+
+2.1 - titre-majeur.htm
+----------------------
+[image]
+
+{ URL }
+{ VERSION }

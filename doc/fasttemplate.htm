@@ -1,0 +1,241 @@
+<html>
+
+<head>
+<title>Documentation fast-template</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF">
+<font face="Arial, Helvetica, sans-serif"><b><u>V - Documentation de la classe 
+Fast-Template</u></b></font><br>
+<br>
+&nbsp;&nbsp;<b>5.1 - Attributs</b><a name="1"></a><br>
+<br>
+<table border="1" cellspacing="0" cellpadding="1">
+  <tr>
+    <td>$rootDir</td>
+    <td>R&eacute;pertoire de base du th&egrave;me</td>
+  </tr>
+  <tr>
+    <td>$parseVar</td>
+    <td>Tableau contenant les variables &agrave; convertir</td>
+  </tr>
+  <tr>
+    <td>$parseFunction</td>
+    <td>Tableau contenant les fonctions &agrave; executer</td>
+  </tr>
+  <tr>
+    <td>$parseModule</td>
+    <td>Tableau contenant les modules &agrave; afficher</td>
+  </tr>
+  <tr>
+    <td>$parseTime</td>
+    <td>Temps en secondes que le script &agrave; mit pour interpr&eacute;ter le 
+      fichier</td>
+  </tr>
+  <tr>
+    <td>$strictMode</td>
+    <td>Indique si on est en mode strique et donc si on enregistre les erreurs</td>
+  </tr>
+  <tr>
+    <td>$errorMessage</td>
+    <td>Contient les messages d'erreur</td>
+  </tr>
+  <tr>
+    <td>$parseResult</td>
+    <td>Variable contenant le r&eacute;sultat</td>
+  </tr>
+</table>
+<br>
+<b>NOTE</b> : Les attributs ne doivent pas &ecirc;tre acc&egrave;d&eacute;es directement. 
+Pour cet effet, des m&eacute;thodes ont &eacute;t&eacute; mises en place.<br>
+<br>
+<br>
+&nbsp;&nbsp;<b>5.2 - M&eacute;thodes</b><a name="2"></a><br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.1 - Le constructeur<a name="21"></a></b><br>
+<br>
+  Le constructeur accepte comme param&egrave;tre le r&eacute;pertoire par d&eacute;faut du theme. Si vous ne mettez rien, la classe prendra comme r&eacute;pertoire le r&eacute;pertoire courant.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.2 - addVar()</b><a name="22"></a><br>
+<br>
+  La m&eacute;thode addVar() ajoute une variable aux fichiers templates. Le premier param&egrave;tre est le nom de la variable et le deuxi&egrave;me sa valeur. Toutefois, vous pouvez utiliser un tableau associatif pour d&eacute;finir un ensemble de variables et de valeurs. Exemple :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;addVar(&quot;MA_VARIABLE&quot;, &quot;Sa valeur&quot;) 
+;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;addVar(array(&quot;MAVARIABLE1&quot; =&gt; &quot;Savaleur&quot;, 
+&quot;MAVARIABLE2&quot; =&gt; &quot;Sa valeur aussi&quot;)) ;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.3 - deleteVar()</b><a name="23"></a><br>
+<br>
+  La m&eacute;thode deleteVar() supprime la variable pass&eacute;e en param&egrave;tre. On ne peut pas utiliser les tableaux associatifs. Exemple :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;deleteVar(&quot;MAVARIABLE2&quot;) ;<br>
+      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.4 - getVarValue()</b><a name="24"></a><br>
+<br>
+  La m&eacute;thode getVarValue() retourne la valeur de la variable pass&eacute;e en param&egrave;tre. On ne peut pas utiliser les tableaux associatifs.<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.5 - addFunction()</b><a name="25"></a><br>
+<br>
+  La m&eacute;thode addFunction() ajoute une fonction aux fichiers templates. Le premier param&egrave;tre est le nom de la fonction et le deuxi&egrave;me son code associ&eacute;. Toutefois, vous pouvez utiliser un tableau associatif pour d&eacute;finir un ensemble de fonctions et de codes. Exemple :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;addFunction(&quot;MA_FONCTION&quot;, &quot;echo 'hello 
+world' ;&quot;) ;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;addFunction(array(&quot;MAFONCTION1&quot; =&gt; &quot;echo 
+date() ;&quot;, &quot;MAFONCTION2&quot; =&gt; &quot;\$i++&quot;)) ;<br>
+<br>
+  Pour que le r&eacute;sultat de la fonction soit ins&eacute;r&eacute; dans le fichier template, il faut que la fonction &eacute;crive dans la variable $STDOUT. Pour faire appara&icirc;tre des erreurs, elle doit &eacute;crire dans la variables $STDERR.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.6 - deleteFunction()</b><a name="26"></a><br>
+<br>
+  La m&eacute;thode deleteFunction() supprime la fonction pass&eacute;e en param&egrave;tre. On ne peut pas utiliser les tableaux associatifs. Exemple :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;deleteFunction(&quot;MAFONCTION2&quot;) ;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.7 - getFunctionValue()</b><a name="27"></a><br>
+<br>
+  La m&eacute;thode getFunctionValue() retourne le code de la variable pass&eacute;e en param&egrave;tre. On ne peut pas utiliser les tableaux associatifs.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.8 - addModule()</b><a name="28"></a><br>
+<br>
+  La m&eacute;thode addModule() ajoute un module aux fichiers templates. Le premier param&egrave;tre est le nom du module et le deuxi&egrave;me le nom du fichier associ&eacute;. Toutefois, vous pouvez utiliser un tableau associatif pour d&eacute;finir un ensemble de modules et de fichiers. Exemple :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;addModule(&quot;MON_MODULE&quot;, &quot;essai.php&quot;) 
+;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;addModule(array(&quot;MOMMODULE1&quot; =&gt; &quot;module1.php&quot;, 
+&quot;MONMODULE2&quot; =&gt; &quot;module2.php&quot;)) ;<br>
+<br>
+  Pour que le r&eacute;sultat du module soit ins&eacute;r&eacute; dans le fichier template, il faut que le module &eacute;crive dans la variable $STDOUT. Pour faire appara&icirc;tre des erreurs, il doit &eacute;crire dans la variables $STDERR.<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.9 - deleteModule()</b><a name="29"></a><br>
+<br>
+  La m&eacute;thode deleteModule() supprime la fonction pass&eacute;e en param&egrave;tre. On ne peut pas utiliser les tableaux associatifs. Exemple :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;deleteModule(&quot;MONMODULE2&quot;) ;<br>
+      <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.10 - getModuleValue()</b><a name="210"></a><br>
+<br>
+  La m&eacute;thode getModuleValue() retourne le nom du fichier pass&eacute;e en param&egrave;tre. On ne peut pas utiliser les tableaux associatifs.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.11 - setStrictMode()</b><a name="211"></a><br>
+<br>
+  La m&eacute;thode setStrictMode() fait passer la classe fast-template en mode strict ou debuggage. D&egrave;s que quelque chose ne va pas, il y a une erreur qui est signal&eacute;e.<br>
+  <br>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;5.2.12 - unsetStrictMode()</b><a name="212"></a><br>
+<br>
+  La m&eacute;thode unsetStrictMode() fait retourner la classe fast-template en mode normal.<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.13 - getErrorMessage()</b><a name="213"></a><br>
+<br>
+  La m&eacute;thode getErrorMessage() retourne un tableau contenant les erreurs d&eacute;tect&eacute;es pendant que la classe &eacute;tait en mode strict.<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.14 - getParseTime()</b><a name="214"></a><br>
+<br>
+  La m&eacute;thode getParseTime() retourne le temps en seconde que la classe &agrave; mit pour parser le fichier.<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.15 - checkVarName()</b><a name="215"></a><br>
+<br>
+  La m&eacute;thode checkVarName() v&eacute;rifie que la variable &agrave; un nom correct, i.e., ne commence pas par un chiffre et est compos&eacute; de lettre majuscule/minuscule, de chiffre et de l'underscore.<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.16 - addVarInFile()</b><a name="216"></a><br>
+<br>
+  La m&eacute;thode addVarInFile() lit le fichier pass&eacute; en param&egrave;tre pour acqu&eacute;rir les variables param&egrave;tr&eacute;e dedans. Un fichier doit avoir la structure suivante :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MON_NOM_DE_VARIABLE = &quot;ma valeur&quot;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DEUXIEME_VARIABLE &nbsp;&nbsp;&nbsp;&nbsp;= &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Super 
+sa valeur ! Mais l\'apostrophe ?'<br>
+  <br>
+  La chaine repr&eacute;sentant la valeur doit &ecirc;tre encadr&eacute;e par &quot; ou '. Si vous souhaitez utiliser le caract&egrave;re &quot; ou ' qui sert de d&eacute;limiteur, doit &ecirc;tre pr&eacute;c&eacute;d&eacute; du caract&egrave;re d'omission \.<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.17 - parse()</b><a name="217"></a><br>
+<br>
+  La m&eacute;thode parse() traduit le fichier pass&eacute; en param&egrave;tre et affecte le r&eacute;sultat dans la variable parseResult.<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.18 - clearResult()</b><a name="218"></a><br>
+<br>
+  (je change de fa&ccedil;on d'expliquer car j'en est marre de toujours commencer par La m&eacute;thode...)<br>
+  Efface le contenut de la variable $parseResult.<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.19 - getParseResult()</b><a name="219"></a><br>
+<br>
+  Renvoit le r&eacute;sultat de l'interpr&eacute;tation du fichier.<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.20 - printResult()</b><a name="220"></a><br>
+<br>
+  Affiche le r&eacute;sultat de l'interp&eacute;tation.<br>
+  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>5.2.21 - parseLine()</b><a name="221"></a><br>
+<br>
+  Interpr&egrave;te la ligne pass&eacute;e en param&egrave;tre.<br>
+<br>
+&nbsp;&nbsp;<b>5.3 - Utilisation de la classe</b><a name="3"></a><br>
+<br>
+La classe fasttemplate est tr&egrave;s simple &agrave; utiliser. Pour illustrer son utilisation, je vous fournit l'exemple ci-dessous :<br>
+index.php :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Inclu le fichier fasttemplate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;include(&quot;fasttemplate.php&quot;) ;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Cr&eacute;er un objet de classe fasttemplate. Le chemin 
+d'acc&egrave;s ne doit pas<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// forc&eacute;ment se terminer par un /<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$monTheme = new fasttemplate(&quot;repertoire_contenant_les_themes&quot;) 
+;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Passe en mode strict<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$monTheme-&gt;setStrictMode() ;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Ajout une variable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$monTheme-&gt;addVar(&quot;MA_VARIABLE&quot;, &quot;coucou&quot;) 
+;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Ajoute une fonction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$monTheme-&gt;addFunction(&quot;nom&quot;, &quot;\$STDOUT 
+= 'mon nom';&quot;) ;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Ajoute un module<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$monTheme-&gt;addModule(&quot;unModule&quot;, &quot;essai.php&quot;) 
+;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Pr&eacute;pare la page<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$monTheme-&gt;parse(&quot;index.htm&quot;) ;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Affiche la page<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$monTheme-&gt;printResult() ;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Affecte le r&eacute;sultat &agrave; un variable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$monTheme-&gt;addVar(&quot;PAGE&quot;, $monTheme-&gt;getParseResult()) 
+;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Efface le r&eacute;sultat<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$monTheme-&gt;clearResult() ;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Affiche un ligne contenant l'ancienne page<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$monTheme-&gt;parseLine(&quot;Coucou voici la page { PAGE 
+}&quot;) ;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Affiche le tout<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$monTheme-&gt;printResult() ;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;// Affiche les erreurs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$erreur = $monTheme-&gt;getErrorMessage() ;<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for($i = 0; $i &lt; count($erreur); $i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo $erreur[$i] ;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?&gt;<br>
+<br>
+index.htm :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;html&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{ MA_VARIABLE }&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{ function#nom }&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{ module#unModule }&lt;br&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/html&gt;<br>  
+<br>  
+essai.php :<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;?php<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$STDOUT = &quot;Mais c'est un module !&quot; ;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;$STDERR = &quot;Il y a des erreurs ?&quot; ;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?&gt;<br>
+<br>
+<br>
+<font size="-1"><i>$ Bubule - 1.0 - 25/07/2003 14h52 $</i></font> 
+</body>
+</html>

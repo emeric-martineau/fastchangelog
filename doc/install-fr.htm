@@ -1,0 +1,97 @@
+<html>
+
+<body bgcolor="white">
+
+<h1>1 - Installation</h1>
+
+
+<p>Pour installer FastChangeLog, décompressez l'archive.</p>
+
+<p>Editer le fichier index.php et à la ligne 34 :</p>
+
+<p>$monTheme-&gt;addVar(&quot;URL&quot;, &quot;http://localhost/changelog&quot;) ;</p>
+
+<p>rempacer http://localhost/changelog par votre url d'acc&egrave;s.</p>
+
+<p>Ensuite, il suffit de personnaliser les fichiers de theme, contenu dans le r&eacute;pertoire themes.<br />
+Enfin, copier les fichiers (hormis r&eacute;pertoire doc et le contenu du r&eacute;pertoire changelog) sur votre serveur.</p>
+
+
+<h1>2 - Personnalisation</h1>
+
+<p>Pour personnaliser l'affichage de votre changelog, lisez la documentation fasttemplate.htm.</p>
+
+<p>Les fichiers de th&egrave;mes sont :<br />
+- bugfix.htm : contenant la ligne d'affichage pour une r&eacute;solution d'un bug via un module sp&eacute;cial.<br />
+- index.htm : page d'index<br />
+- ligne.htm : ligne normal<br />
+- retour.htm : lien de retour si on affiche le changelog d'une version<br />
+- titre-major.htm : affichage de la version majeur (e.g. version 2)<br />
+- titre-minor.htm : affichage de la version mineur (e.g. version 2.1.2)</p>
+
+<h2>2.1 - index.htm</h2>
+
+<img src="fastchangelog1.png" />
+
+<p>{ URL } : contient l'url pour acc&egrave;der au changelog<br />
+{ PAGE } : va contenir soit la liste des versions majeurs, soit la liste des versions mineurs avec les change</p>
+
+<h2>2.2 - titre-majeur.htm</h2>
+
+<img src="fastchangelog2.png" />
+
+<p>{ URL } : contient l'url pour acc&egrave;der au changelog<br />
+{ VERSION } : contient le num&eacute;ro de version majeur</p>
+
+<h2>2.3 - titre-mineur.htm</h2>
+
+<img src="fastchangelog3.png" />
+
+<p>{ VERSION } : contient le num&eacute;ro de version mineur<br />
+{ NAME } : nom de la personne qui a valid&eacute; la version<br />
+{ DATE } : date de la version<br />
+{ CHANGE } : contient les lignes de changements</p>
+
+<h2>2.4 - ligne.htm</h2>
+
+<img src="fastchangelog4.png" />
+
+<p>{ TEXTE } : texte du changement</p>
+
+<h2>2.5 - bugfix.htm</h2>
+
+<img src="fastchangelog5.png" />
+
+<p>{ BUG } : contient le num&eacute;ro du bug<br />
+{ COMPLEMENT } : complement d'information</p>
+
+<h2>2.6 - retour.htm</h2>
+
+<img src="fastchangelog6.png" />
+
+<p>{ URL } : contient l'url pour acc&egrave;der au changelog</p>
+
+<h1>3 - Création des versions</h1>
+
+<p>Pour cr&eacute;er une version majeur, il suffit de cr&eacute;er un r&eacute;pertoire dans le r&eacute;pertoire changelog qui &agrave; pour nom le num&eacute;ro de la version.<br />
+Pour cr&eacute;er une version mineur, il suffit de cr&eacute;er un r&eacute;pertoire dans le r&eacute;pertoire de version majeur qui a pour nom tout la version (majeur + mineur).<br />
+Dans ce dernier r&eacute;pertoire, il suffira de cr&eacute;er et remplir un fichier appel&eacute; <strong>log.txt</strong></p>
+
+<h1>4 - Format du fichier log.txt</h1>
+
+<p>Le fichier log.txt &agrave; une structure un peu sp&eacute;cial.<br />
+La premi&egrave;re ligne contient le nom de la personne qui &agrave; cr&eacute;er le changelog.<br />
+La deuxi&egrave;me ligne contient la date du changelog.<br />
+Ensuite, tout le reste du fichier contient le changelog.</p>
+
+<h2>4.1 - Gestion des bugfix</h2>
+
+<p>Une fonction sp&eacute;ciale pour le bugfix a &eacute;t&eacute; cr&eacute;&eacute;. Il suffit que la ligne commence par <strong>@</strong>, suivi du num&eacute;ro du bug.<br />
+Si vous souhaitez ajouter des informations compl&eacute;mentaires, ajoutez les apr&egrave;s avoir laiss&eacute; un espace.</p>
+
+<h2>4.2 - Exemple de fichier</h2>
+
+<img src="fastchangelog7.png" />
+
+</body>
+</html>

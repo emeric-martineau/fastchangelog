@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>FastChangeLog</title>
+    <style type="text/css">
+      body \{
+             background-color : white ;
+             margin: 0px;
+             padding: 0px;
+             color: black;
+             font-family: verdana, arial, helvetica, sans-serif;
+           }
+      #logo \{
+             background-color: #666699;
+             border-width: 1px 0px;
+             border-color: #333366;
+             border-style: solid;
+             text-align: left;
+             padding-right: 6px;
+             font-size: 200%;
+             color: white;
+             padding: 10px;
+           }
+
+      #texte \{
+             text-align: justify;
+             padding: 10px;
+           }
+
+      #changelog \{
+             background-color: #CCCCCC;
+             border-width: 1px 1px 1px 1px;
+             border-color: black;
+             border-style: solid;
+             margin: 10px;
+             padding: 10px;
+           }
+
+      img { border : 0px ;}
+    </style>
+  </head>
+
+  <body>
+    <div id="logo">
+        <img src="{ URL }/themes/logo.png" height="128" width="128" alt="" /> FastChangeLog
+    </div>
+
+    <div id="texte">
+      <strong>Fran&ccedil;ais</strong>
+      <blockquote><strong>FastChangeLog</strong> est une application qui vous permet de rapidement et tr&egrave;s simplement cr&eacute;er un
+      changelog automatique, sans base de donn&eacute;es et sans administration.<br />
+      Son fonctionnement et on ne peut plus simple. Vous avez un r&eacute;pertoire pour chaque version, un sous r&eacute;pertoire
+      pour les versions mineurs et un fichier dans chacun de ses r&eacute;pertoires.<br />
+      Ensuite, tout est g&eacute;n&eacute;r&eacute; automatiquement et de fa&ccedil;on totalement personnalisable. De plus, une fonction sp&eacute;ciale
+      existe pour les bugfix.<br />
+      <strong>Fonctionne avec PHP version 3, 4 et 5 !</strong>
+      <br /><br />
+      <a href="{ URL }/fcl-1.zip">T&eacute;l&eacute;charger</a></blockquote>
+
+      <strong>English</strong>
+      <blockquote><strong>FastChangeLog</strong> is an application with you can quickly and simply make an automatic changelog, without data base and administration.<br />
+      You have a directory for each major version, under this directory, you have an other directory for each minor version who contain one file.<br />
+      After, all pages was automaticly generate and totaly skinable. And, a special function exist for the bug fix.<br />
+      <strong>Work with PHP 3, 4 et 5 !</strong>
+      <br /><br />
+      <a href="{ URL }/fcl-1.zip">Download</a></blockquote>
+    </div>
+
+    <div id="changelog">
+        <strong>Ci-dessous, un exemple de changelog :</strong> { RETOUR }<br /><br />
+
+        <ul>
+        { PAGE }
+        </ul>
+    </div>
+
+    <div><br /><br />
+      Page g&eacute;n&eacute;r&eacute; par <a href="http://php4php.free.fr/fastchangelog">FastChangeLog</a> - Copyright (c) 2004 MARTINEAU Emeric - Diffus&eacute; sous licence GNU/GPL.
+    </div>
+  </body>
+</html>
